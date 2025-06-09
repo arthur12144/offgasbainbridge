@@ -5,184 +5,433 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Off Gas Bainbridge - Home Electrification Coaching</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #1e3a3a 0%, #2d5f5f 100%);
-            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                        url('excavator-removing-tank.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            min-height: 400px;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
         }
         
-        .container {
-            max-width: 600px;
+        .header h1 {
+            font-size: 3rem;
+            margin: 0 0 1rem 0;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            line-height: 1.2;
+        }
+        
+        .header .tagline {
+            font-size: 1.4rem;
+            font-weight: 400;
+            opacity: 0.95;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+        
+        .content {
+            padding: 4rem 2rem;
             background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             text-align: center;
-            margin: 2rem;
         }
         
-        .logo {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #00a693;
-            margin-bottom: 1rem;
-        }
-        
-        .description {
+        .intro-text {
             font-size: 1.2rem;
-            color: #555;
-            margin-bottom: 2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            background: #20b2aa;
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            background: #008b8b;
+            transform: translateY(-2px);
+        }
+        
+        .cards-section {
+            background: #f5f5f5;
+            padding: 4rem 2rem;
+        }
+        
+        .cards-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin: 0 0 3rem 0;
+            color: #000;
+            font-weight: 600;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .card-image.heat-pump {
+            background-image: url('heat-pump-photo.jpg');
+        }
+        
+        .card-image.planning {
+            background-image: url('planning-photo.jpg');
+        }
+        
+        .card-image.rain-barrel {
+            background-image: url('rain-barrel-photo.jpg');
+        }
+        
+        .card-image.other-projects {
+            background: linear-gradient(45deg, #20b2aa, #008b8b);
+        }
+        
+        .contact-section {
+            background: white;
+            padding: 4rem 2rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .contact-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin: 0 0 1rem 0;
+            color: #000;
+            font-weight: 600;
+        }
+        
+        .contact-intro {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin: 0 auto 3rem auto;
+            max-width: 600px;
+        }
+        
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #000;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #20b2aa;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            background: #20b2aa;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #008b8b;
+        }
+        
+        .contact-info {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .contact-info p {
+            color: #666;
+            margin: 0.5rem 0;
+        }
+        
+        .contact-info a {
+            color: #20b2aa;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .about-section {
+            background: #f5f5f5;
+            padding: 4rem 2rem;
+        }
+        
+        .about-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin: 0 0 3rem 0;
+            color: #000;
+            font-weight: 600;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .about-photo {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, #20b2aa, #008b8b);
+            border-radius: 8px;
+            background-image: url('arthur-photo.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #333;
+        }
+        
+        .about-text p {
+            margin: 0;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .card h4 {
+            margin: 0 0 0.8rem 0;
+            font-size: 1.3rem;
+            color: #000;
+            font-weight: 600;
+        }
+        
+        .card p {
+            margin: 0;
+            font-size: 1rem;
+            color: #666;
             line-height: 1.5;
         }
         
-        .steps {
-            list-style: none;
-            margin: 2rem 0;
-        }
-        
-        .steps li {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 1rem 0;
-            padding: 1rem;
-            background: linear-gradient(135deg, #20b2aa, #008b8b);
-            color: white;
-            border-radius: 10px;
-            transform: translateY(0);
-            transition: all 0.3s ease;
-        }
-        
-        .steps li:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 166, 147, 0.3);
-        }
-        
-        .steps li:nth-child(1) {
-            background: linear-gradient(135deg, #00b894, #00a085);
-        }
-        
-        .steps li:nth-child(2) {
-            background: linear-gradient(135deg, #0984e3, #0671d3);
-        }
-        
-        .steps li:nth-child(3) {
-            background: linear-gradient(135deg, #00cec9, #00b3b8);
-        }
-        
-        .hero-image {
-            width: 100%;
-            max-width: 500px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin: 1rem 0 2rem 0;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-        
-        .services {
-            margin: 2rem 0;
-            text-align: left;
-        }
-        
-        .services h3 {
-            color: #00a693;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-        
-        .services ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .services li {
-            background: linear-gradient(135deg, #e8f6f5, #d4f1ed);
-            margin: 0.5rem 0;
-            padding: 0.8rem 1rem;
-            border-radius: 8px;
-            border-left: 4px solid #00a693;
-            font-size: 1rem;
-            color: #2d3436;
-        }
-        
-        .services li:before {
-            content: "✓ ";
-            color: #00a693;
-            font-weight: bold;
-            margin-right: 0.5rem;
-        }
-        
-        .footer {
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            color: #888;
-        }
-        
-        @media (max-width: 600px) {
-            .container {
-                margin: 1rem;
-                padding: 2rem;
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
             }
             
-            .logo {
-                font-size: 2rem;
+            .header .tagline {
+                font-size: 1.2rem;
             }
             
-            .description {
-                font-size: 1.1rem;
+            .header {
+                padding: 4rem 1rem;
             }
             
-            .steps li {
-                font-size: 1.3rem;
+            .content {
+                padding: 3rem 1rem;
             }
             
-            .hero-image {
-                height: 150px;
+            .cards-section {
+                padding: 3rem 1rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            
+            .about-photo {
+                height: 250px;
+                margin: 0 auto;
+                max-width: 250px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">Off Gas Bainbridge</div>
-        
-        <!-- Replace 'path-to-your-excavator-photo.jpg' with actual filename when you upload -->
-        <img src="excavator-removing-tank.jpg" alt="Excavator removing propane tank" class="hero-image">
-        
-        <p class="description">
-            Off Gas Bainbridge is your friendly neighborhood coach for electrifying your house and getting off of gas.
-        </p>
-        
-        <ol class="steps">
-            <li>Ditch Gas.</li>
-            <li>Go Electric.</li>
-            <li>Save Money.</li>
-        </ol>
-        
-        <div class="services">
-            <h3>Our Services</h3>
-            <ul>
-                <li>Heat pump coaching</li>
-                <li>Making an electrification plan</li>
-                <li>Rain barrel installation</li>
-                <li>Any other projects needed to get off of gas</li>
-            </ul>
+    <div class="header">
+        <h1>Off Gas Bainbridge</h1>
+        <p class="tagline">Off Gas Bainbridge is your friendly neighborhood coach for electrifying your house and getting off of gas.</p>
+    </div>
+    
+    <div class="content">
+        <p class="intro-text">1. Ditch Gas. 2. Go Electric. 3. Save Money</p>
+        <a href="#contact" class="btn">Start Your Electrification Journey</a>
+    </div>
+    
+    <div class="cards-section">
+        <h2>Our Services</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-image heat-pump"></div>
+                <div class="card-content">
+                    <h4>Heat pump coaching</h4>
+                    <p>Expert guidance for your heating upgrade with rebate navigation and contractor recommendations.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image planning"></div>
+                <div class="card-content">
+                    <h4>Making a prioritized electrification plan</h4>
+                    <p>Strategic roadmap for your complete home transformation.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image rain-barrel"></div>
+                <div class="card-content">
+                    <h4>Rain barrel installation</h4>
+                    <p>Harvest rainwater for your garden and emergency backup water storage.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image other-projects"></div>
+                <div class="card-content">
+                    <h4>Any other projects needed to get off of gas</h4>
+                    <p>Complete support for your fossil fuel elimination journey.</p>
+                </div>
+            </div>
         </div>
+    </div>
+    
+    <div class="contact-section" id="contact">
+        <h2>Get Started Today</h2>
+        <p class="contact-intro">Ready to start your electrification journey? Let's discuss your goals and create a plan that works for your Bainbridge Island home.</p>
         
-        <div class="footer">
-            Serving Bainbridge Island & Kitsap County
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            
+            <div class="form-group">
+                <label for="interest">Tell us about your project *</label>
+                <textarea id="interest" name="interest" placeholder="What appliances are you looking to replace? Any specific questions or timeline?" required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+        
+        <div class="contact-info">
+            <p>Or reach out directly:</p>
+            <p><a href="mailto:info@offgasbainbridge.com">info@offgasbainbridge.com</a></p>
+            <p>Serving Bainbridge Island & Kitsap County</p>
+        </div>
+    </div>
+    
+    <div class="about-section">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-photo">Arthur's Photo</div>
+            <div class="about-text">
+                <p>My name is Arthur Peterson, I am a Bainbridge Island homeowner (Rolling Bay) who went through the Electrification journey in 2022. I have deep experience in environmental sustainability including a master's of science in sustainable systems from the University of Michigan and have worked in corporate sustainability where I apply a data and engineering focused lens to achieving new levels of sustainability performance. I also have a passion for running the numbers, and a practical know-how of what it takes to successfully complete a home electrification project. I'm also a dad to two kids, and my personal electrification projects have to pass the test of my wife, two kids, two dogs, and even the seven chickens.</p>
+            </div>
         </div>
     </div>
 </body>
